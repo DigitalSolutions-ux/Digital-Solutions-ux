@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full bg-black shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <img src="/Users/angelhc/Desktop/PNG/Logo.png" alt="Logo" class="w-10 h-10">
+        <span class="text-xl font-bold text-blue-600">Digital Solutions</span>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-white font-medium">
+        <a href="#inicio" class="hover:text-blue-600">Inicio</a>
+        <a href="#servicios" class="hover:text-blue-600">Servicios</a>
+        <a href="#portafolio" class="hover:text-blue-600">Portafolio</a>
+        <a href="#clientes" class="hover:text-blue-600">Clientes</a>
+        <a href="#contacto" class="hover:text-blue-600">Contacto</a>
+      </nav>
+      <a href="#contacto" class="ml-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700">Cotiza</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="h-screen bg-blue-50 flex flex-col-reverse md:flex-row items-center justify-center text-center md:text-left px-6">
+    <div class="md:w-1/2 mt-10 md:mt-0">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-blue-800">Impulsamos tu marca al siguiente nivel</h1>
+      <p class="text-lg md:text-xl mb-6 text-gray-700">Branding, diseño digital y estrategias personalizadas para negocios con visión.</p>
+      <div class="flex flex-col md:flex-row justify-center md:justify-start gap-4">
+        <a href="#servicios" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Ver servicios</a>
+        <a href="#contacto" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-600 hover:text-white">Cotiza tu proyecto</a>
+      </div>
+    </div>
+    <div class="md:w-1/2">
+      <img src="PNG/Fondo de Mockup eliminado.png" alt="Mockup creativo" class="w-full max-w-md mx-auto animate-float">
+    </div>
+  </section>
+  
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+  
+  
+
+  <!-- Servicios -->
+  <section id="servicios" class="py-20 bg-white px-6 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10">Te Ofrecemos</h2>
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="text-blue-600 text-4xl mb-2">🎨</div>
+        <h3 class="font-semibold mb-2">Branding</h3>
+        <p class="text-sm">Logotipos, identidad visual, naming profesional.</p>
+      </div>
+      <div class="text-center">
+        <div class="text-blue-600 text-4xl mb-2">📢</div>
+        <h3 class="font-semibold mb-2">Marketing Digital</h3>
+        <p class="text-sm">Campañas, redes sociales, anuncios efectivos.</p>
+      </div>
+      <div class="text-center">
+        <div class="text-blue-600 text-4xl mb-2">🖌️</div>
+        <h3 class="font-semibold mb-2">Diseño Digital</h3>
+        <p class="text-sm">Contenido para redes, flyers, presentaciones.</p>
+      </div>
+      <div class="text-center">
+        <div class="text-blue-600 text-4xl mb-2">🌐</div>
+        <h3 class="font-semibold mb-2">Páginas Web</h3>
+        <p class="text-sm">Landing pages, tiendas online, optimización web, hosting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portafolio -->
+  <section id="portafolio" class="bg-gray-100 py-20 px-6">
+    <h2 class="text-3xl font-bold text-center mb-10">Nuestros Trabajos</h2>
+    <div class="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+      <div class="bg-white shadow rounded-xl overflow-hidden hover:shadow-lg transition">
+        <img src="PNG/CocinaAutenticaLOGO.png" alt="Proyecto 1">
+        <div class="p-4">
+          <h4 class="font-semibold">Branding</h4>
+          <p class="text-sm text-gray-500">Identidad de marca para un restaurante de comida mexicana.</p>
+        </div>
+      </div>
+      <div class="bg-white shadow rounded-xl overflow-hidden hover:shadow-lg transition">
+        <img src="PNG/Fast & Beefy.png" alt="Proyecto 2">
+        <div class="p-4">
+          <h4 class="font-semibold">Diseño Digital</h4>
+          <p class="text-sm text-gray-500">Creacion de flyers para restaurante.</p>
+        </div>
+      </div>
+      <div class="bg-white shadow rounded-xl overflow-hidden hover:shadow-lg transition">
+        <img src="PNG/Pollos El Rey.png" alt="Proyecto 3">
+        <div class="p-4">
+          <h4 class="font-semibold">Diseño Digital</h4>
+          <p class="text-sm text-gray-500">Creacion de flyers para restaurante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="clientes" class="py-20 px-6 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10">Clientes Felices</h2>
+    <div class="grid md:grid-cols-3 gap-6 text-center">
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="italic">“Nos encantó el branding, muy profesionales.”</p>
+        <p class="mt-4 font-semibold">- Cocina Autentica</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="italic">“Rápidos, creativos y con excelente comunicación.”</p>
+        <p class="mt-4 font-semibold">- Fast & Beefy.</p>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow">
+        <p class="italic">“Nuestra tienda online quedó espectacular.”</p>
+        <p class="mt-4 font-semibold">- Pollos El Rey.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="bg-blue-50 py-20 px-6">
+    <h2 class="text-3xl font-bold text-center mb-10">Contáctanos</h2>
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow">
+        <form id="formulario" onsubmit="enviarWhatsApp(event)" class="space-y-4">
+            <input type="text" id="nombre" placeholder="Nombre" class="w-full border border-gray-300 px-4 py-2 rounded-lg" required>
+            <input type="email" id="correo" placeholder="Correo" class="w-full border border-gray-300 px-4 py-2 rounded-lg" required>
+            <select id="servicio" class="w-full border border-gray-300 px-4 py-2 rounded-lg">
+              <option value="">Tipo de servicio</option>
+              <option>Branding</option>
+              <option>Diseño Digital</option>
+              <option>Marketing</option>
+              <option>Web</option>
+            </select>
+            <textarea id="mensaje" placeholder="Mensaje" class="w-full border border-gray-300 px-4 py-2 rounded-lg" rows="4"></textarea>
+            <button type="submit" class="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Enviar</button>
+          </form>
+          
+          <script>
+            function enviarWhatsApp(event) {
+              event.preventDefault();
+              const nombre = document.getElementById("nombre").value;
+              const correo = document.getElementById("correo").value;
+              const servicio = document.getElementById("servicio").value;
+              const mensaje = document.getElementById("mensaje").value;
+          
+              const texto = `Hola! Me llamo ${nombre}.\nMi Correo: ${correo}\nRequiero del Servicio: ${servicio}\nMensaje: ${mensaje}`;
+              const url = "https://wa.me/528147931498?text=" + encodeURIComponent(texto);
+              window.open(url, "_blank");
+            }
+          </script>
+          
+          
+    </div>
+    <div class="text-center mt-6">
+      <a href="https://wa.me/message/EGRGU34QD263J1" target="_blank" class="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">📲 Contactanos por WhatsApp</button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 text-sm">
+      <div>
+        <h4 class="font-bold mb-2">Digital Solutions</h4>
+        <p>Tu mejor opcion ala hora de automatizar y garantizar resultados.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Redes Sociales</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/share/1ARHHK6YAP/?mibextid=wwXIfr" class="hover:underline">Facebook</a></li>
+          <li><a href="https://www.instagram.com/digitalsolutions_tam?igsh=bjR1c2N4dmdldnpo" class="hover:underline">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@digitalsolutions__?_t=ZM-8vXyl1A7qsQ&_r=1" class="hover:underline">TikTok</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-2">Contacto</h4>
+        <p>Correo: digitalsolutions1232@gmail.com</p>
+        <p>Tel: +52 81 4793 1498</p>
+      </div>
+    </div>
+    <div class="text-center text-xs mt-6 text-gray-400">© 2025 Digital Solutions. Todos los derechos reservados.</div>
+  </footer>
+</body>
+</html>
