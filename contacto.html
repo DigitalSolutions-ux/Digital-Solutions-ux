@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Digital Solutions</title>
+    <meta name="description" content="Contáctanos para una asesoría gratuita y sin compromiso. Hablemos de cómo podemos llevar tu negocio al siguiente nivel.">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#5503a6">
+    <meta name="theme-color" content="#0A0140">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="main-header">
+        <nav class="main-nav container">
+            <a href="index.html" class="nav-logo">Digital Solutions</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="portafolio.html">Portafolio</a></li>
+                <li><a href="contacto.html" class="nav-contact-btn active">Contacto</a></li>
+            </ul>
+             <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contact" class="contact-section page-section">
+            <div class="container fade-in">
+                <h1 class="page-title">¿Listo para Crecer?</h1>
+                <p class="page-subtitle">Envíanos un mensaje directo a nuestro WhatsApp. Rellena el formulario y serás redirigido para iniciar la conversación.</p>
+                <form id="whatsapp-form" class="contact-form">
+                    <input id="wa-name" type="text" name="name" placeholder="Tu Nombre" required>
+                    <input id="wa-email" type="email" name="email" placeholder="Tu Correo (para seguimiento)" required>
+                    <textarea id="wa-message" name="message" placeholder="Cuéntanos un poco sobre tu proyecto..." rows="5" required></textarea>
+                    <button type="submit" class="cta-button">Enviar Mensaje a WhatsApp</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="chatbot-container"></div>
+
+    <footer class="main-footer">
+        </footer>
+    
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js" type="module"></script>
+</body>
+</html>
