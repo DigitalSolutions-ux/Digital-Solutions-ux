@@ -6,21 +6,32 @@
     z-index: 1000;
 }
 
-/* Burbuja para abrir el chat (ahora el canvas 3D) */
-#chatbot-canvas {
-    width: 70px !important;
-    height: 70px !important;
+/* Burbuja para abrir el chat (Versión sin 3D) */
+.chat-bubble {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-violeta-intenso);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    box-shadow: 0 4px M(15px) rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
-#chatbot-canvas:hover {
+.chat-bubble:hover {
     transform: scale(1.1);
 }
+.chat-bubble i {
+    color: #fff;
+    font-size: 28px;
+}
+
 
 /* Ventana del Chat */
 .chat-window {
     position: absolute;
-    bottom: 95px; /* Ajustado para el ícono más grande */
+    bottom: 80px; /* Ajustado para el ícono */
     right: 0;
     width: 350px;
     max-width: 90vw;

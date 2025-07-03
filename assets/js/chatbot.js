@@ -1,6 +1,3 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
 document.addEventListener('DOMContentLoaded', () => {
     // =================================================================
     // INICIALIZACIÓN GENERAL DEL CHATBOT Y MODAL
@@ -12,56 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let conversationHistory = [];
 
     // =================================================================
-    // LÓGICA DEL ÍCONO 3D
-    // =================================================================
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    
-    renderer.setSize(70, 70);
-    renderer.domElement.id = 'chatbot-canvas';
-    
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
-    scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-    directionalLight.position.set(5, 10, 7.5);
-    scene.add(directionalLight);
-
-    const robotHeadGroup = new THREE.Group();
-    scene.add(robotHeadGroup);
-    
-    // --- MODELO DE MUESTRA (REEMPLAZAR CON EL REAL) ---
-    const headMaterial = new THREE.MeshStandardMaterial({ color: 0x260273 });
-    const eyeMaterial = new THREE.MeshStandardMaterial({ color: 0xC682D9, emissive: 0x5503A6 });
-    const headMesh = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 16), headMaterial);
-    const leftEyeMesh = new THREE.Mesh(new THREE.SphereGeometry(0.3, 16, 8), eyeMaterial);
-    leftEyeMesh.position.set(-0.5, 0.2, 0.85);
-    const rightEyeMesh = new THREE.Mesh(new THREE.SphereGeometry(0.3, 16, 8), eyeMaterial);
-    rightEyeMesh.position.set(0.5, 0.2, 0.85);
-    robotHeadGroup.add(headMesh, leftEyeMesh, rightEyeMesh);
-
-    camera.position.z = 2.5;
-
-    const mousePosition = new THREE.Vector2();
-    window.addEventListener('mousemove', (event) => {
-        mousePosition.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mousePosition.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    });
-    
-    function animate() {
-        requestAnimationFrame(animate);
-        const targetRotationY = mousePosition.x * 0.4;
-        const targetRotationX = mousePosition.y * 0.4;
-        robotHeadGroup.rotation.y += (targetRotationY - robotHeadGroup.rotation.y) * 0.05;
-        robotHeadGroup.rotation.x += (targetRotationX - robotHeadGroup.rotation.x) * 0.05;
-        renderer.render(scene, camera);
-    }
-    animate();
-
-    // =================================================================
-    // LÓGICA DE LA VENTANA DE CHAT
+    // LÓGICA DE LA VENTANA DE CHAT (VERSIÓN SIN 3D)
     // =================================================================
     chatbotContainer.innerHTML = `
+        <div class="chat-bubble">
+            <i class="fas fa-robot"></i>
+        </div>
         <div class="chat-window">
             <div class="chat-header"><h4>DigiBot</h4><p>Tu Asistente Virtual</p></div>
             <div class="chat-body">
@@ -73,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
     `;
-    chatbotContainer.prepend(renderer.domElement);
 
+    const chatBubble = chatbotContainer.querySelector('.chat-bubble');
     const chatWindow = chatbotContainer.querySelector('.chat-window');
-    renderer.domElement.addEventListener('click', () => chatWindow.classList.toggle('open'));
-
+    chatBubble.addEventListener('click', () => chatWindow.classList.toggle('open'));
+    
     const chatBody = chatbotContainer.querySelector('.chat-body');
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
@@ -121,13 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('click', (event) => {
-        if (!chatbotContainer.contains(event.target)) {
+        if (chatbotContainer && !chatbotContainer.contains(event.target)) {
             chatWindow.classList.remove('open');
         }
     });
 
     // =================================================================
-    // LÓGICA PARA PÁGINA DE SERVICIOS (MODAL) - RESTAURADA
+    // LÓGICA PARA PÁGINA DE SERVICIOS (MODAL)
     // =================================================================
     const packageData = {
         esencial: {
@@ -184,10 +137,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     };
-
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-    if (tabLinks.length > 0) {
+    
+    // Lógica para pestañas y modal en la página de servicios
+    if (document.querySelector('.tabs-container')) {
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
         tabLinks.forEach(link => {
             link.addEventListener('click', () => {
                 const tabId = link.getAttribute('data-tab');
@@ -199,40 +153,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-    }
 
-    if(modal) {
-        const closeModalBtn = document.getElementById('close-modal-btn');
-        const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
-        function openModal(packageName) {
-            const data = packageData[packageName];
-            if (!data) return;
-            document.getElementById('modal-title').innerText = data.title;
-            const modalBody = document.getElementById('modal-body');
-            modalBody.innerHTML = '';
-            for (const key in data.sections) {
-                const section = data.sections[key];
-                let itemsHtml = section.items.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('');
-                modalBody.innerHTML += `<div class="modal-section"><h4>${section.title}</h4><ul>${itemsHtml}</ul></div>`;
+        if (modal) {
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const viewDetailsBtns = document.querySelectorAll('.view-details-btn');
+            function openModal(packageName) {
+                const data = packageData[packageName];
+                if (!data) return;
+                document.getElementById('modal-title').innerText = data.title;
+                const modalBody = document.getElementById('modal-body');
+                modalBody.innerHTML = '';
+                for (const key in data.sections) {
+                    const section = data.sections[key];
+                    let itemsHtml = section.items.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('');
+                    modalBody.innerHTML += `<div class="modal-section"><h4>${section.title}</h4><ul>${itemsHtml}</ul></div>`;
+                }
+                const whatsappContainer = document.getElementById('modal-whatsapp-container');
+                const phoneNumber = '528147931498';
+                const encodedMessage = encodeURIComponent(data.whatsappMessage);
+                const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                whatsappContainer.innerHTML = `<a href="${whatsappURL}" target="_blank" class="cta-button">¡Me Interesa! Contactar por WhatsApp</a>`;
+                modal.classList.add('active');
             }
-            const whatsappContainer = document.getElementById('modal-whatsapp-container');
-            const phoneNumber = '528147931498';
-            const encodedMessage = encodeURIComponent(data.whatsappMessage);
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            whatsappContainer.innerHTML = `<a href="${whatsappURL}" target="_blank" class="cta-button">¡Me Interesa! Contactar por WhatsApp</a>`;
-            modal.classList.add('active');
-        }
-        viewDetailsBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const packageName = btn.getAttribute('data-package');
-                openModal(packageName);
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const packageName = btn.getAttribute('data-package');
+                    openModal(packageName);
+                });
             });
-        });
-        closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
+            closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        }
     }
 });

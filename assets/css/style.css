@@ -469,8 +469,7 @@ body {
     .services-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     .offer-container-full { flex-direction: column; text-align: center; }
     .tab-link { padding: 1rem; font-size: 1rem; }
-    #chatbot-container { bottom: 20px; right: 20px; }
-    .chat-bubble, #chatbot-canvas { width: 60px !important; height: 60px !important; }
+    .chat-bubble { width: 60px; height: 60px; }
 }
 
 /* --- Mobile (hasta 768px) --- */
@@ -512,6 +511,5 @@ body {
     .tab-link { flex-basis: 48%; text-align: center; padding: 0.8rem 1rem; }
     .footer-grid { text-align: center; }
     .footer-column h4::after { left: 50%; transform: translateX(-50%); }
-    #chatbot-container { bottom: 15px; right: 15px; }
-    .chat-bubble, #chatbot-canvas { width: 55px !important; height: 55px !important; }
+    .chat-bubble { width: 55px; height: 55px; }
 }
