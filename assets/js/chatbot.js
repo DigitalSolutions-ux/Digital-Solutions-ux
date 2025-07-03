@@ -1,3 +1,6 @@
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     // =================================================================
     // INICIALIZACIÓN GENERAL DEL CHATBOT Y MODAL
@@ -9,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let conversationHistory = [];
 
     // =================================================================
-    // LÓGICA DE LA VENTANA DE CHAT (VERSIÓN SIN 3D)
+    // LÓGICA DE LA VENTANA DE CHAT (Revertido a ícono simple)
     // =================================================================
     chatbotContainer.innerHTML = `
         <div class="chat-bubble">
@@ -138,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    // Lógica para pestañas y modal en la página de servicios
     if (document.querySelector('.tabs-container')) {
         const tabLinks = document.querySelectorAll('.tab-link');
         const tabContents = document.querySelectorAll('.tab-content');
