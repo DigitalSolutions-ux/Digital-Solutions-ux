@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatbotContainer = document.getElementById('chatbot-container');
     if (!chatbotContainer) return;
 
+    // Array para guardar el historial de la conversación
+    let conversationHistory = [];
+
     // 1. Crear la UI del Chatbot
     chatbotContainer.innerHTML = `
         <div class="chat-bubble">
@@ -39,21 +42,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const userMessage = chatInput.value.trim();
         if (userMessage === '') return;
 
-        // Mostrar el mensaje del usuario
         appendMessage(userMessage, 'user');
         chatInput.value = '';
 
-        // Mostrar indicador de "escribiendo..."
+        // Añadir mensaje del usuario al historial
+        conversationHistory.push({ role: 'user', parts: [{ text: userMessage }] });
+
         const typingIndicator = appendMessage('DigiBot está escribiendo...', 'bot typing');
         
         try {
-            // Enviar mensaje al backend (nuestra función en la nube)
+            // Enviar mensaje Y EL HISTORIAL al backend
             const response = await fetch('/.netlify/functions/chat', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ message: userMessage }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    message: userMessage,
+                    history: conversationHistory 
+                }),
             });
 
             if (!response.ok) {
@@ -63,9 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             const botResponse = data.response;
 
-            // Quitar "escribiendo..." y mostrar la respuesta del bot
             chatBody.removeChild(typingIndicator);
             appendMessage(botResponse, 'bot');
+
+            // Añadir respuesta del bot al historial
+            conversationHistory.push({ role: 'model', parts: [{ text: botResponse }] });
 
         } catch (error) {
             chatBody.removeChild(typingIndicator);
@@ -76,21 +83,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sendBtn.addEventListener('click', sendMessage);
     chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
+        if (e.key === 'Enter') sendMessage();
     });
 
-    // Función para añadir mensajes al cuerpo del chat (CORREGIDA)
     function appendMessage(text, type) {
         const messageDiv = document.createElement('div');
-        
-        // La corrección está aquí. Usamos className para añadir múltiples clases.
         messageDiv.className = `message ${type}`;
-        
         messageDiv.innerText = text;
         chatBody.appendChild(messageDiv);
-        // Hacer scroll hasta el final
         chatBody.scrollTop = chatBody.scrollHeight;
         return messageDiv;
     }
