@@ -331,15 +331,6 @@ body {
 .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 800px; margin: 0 auto; }
 .testimonial-card { background-color: var(--color-azul-negro); padding: 2rem; border-radius: 10px; border-left: 5px solid var(--color-lila-claro); }
 .testimonial-author { font-weight: 600; color: var(--color-lila-claro); }
-.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem; }
-.contact-form-wrapper h3, .contact-card h3 { color: var(--color-lila-claro); margin-bottom: 0.5rem; font-size: 1.5rem; }
-.contact-form-wrapper p, .contact-card p { color: var(--color-texto-secundario); margin-bottom: 1.5rem; }
-.contact-form { display: grid; gap: 1.5rem; max-width: 600px; margin: 0; }
-.contact-form input, .contact-form textarea { width: 100%; padding: 1rem; border-radius: 5px; border: 1px solid var(--color-purpura-oscuro); background-color: var(--color-azul-negro); color: var(--color-texto-principal); font-family: 'Poppins', sans-serif; }
-.contact-info-wrapper { display: flex; flex-direction: column; gap: 2rem; }
-.contact-card { background-color: var(--color-negro-purpura); padding: 2rem; border-radius: 10px; border: 1px solid var(--color-purpura-oscuro); }
-.contact-card a { color: var(--color-lila-claro); text-decoration: none; font-weight: 600; }
-.contact-card .cta-button-outline { display: inline-block; margin-top: 0.5rem; }
 
 /* =================================
    Página de Servicios Interactiva
@@ -381,6 +372,99 @@ body {
 .modal-section ul li i { color: var(--color-lila-claro); margin-right: 10px; }
 .modal-cta { text-align: center; margin-top: 2rem; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* =================================
+   Página de Contacto Rediseñada
+   ================================= */
+.contact-split-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 70px); /* Restar altura del header */
+    margin-top: 70px;
+}
+.contact-split-visual {
+    background-color: var(--color-negro-purpura);
+    background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+}
+.contact-split-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+.contact-form-content {
+    width: 100%;
+    max-width: 450px;
+}
+.contact-split-form .page-title,
+.contact-split-form .page-subtitle {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+.contact-split-form .page-title {
+    font-size: 2.8rem;
+}
+.contact-split-form .page-subtitle {
+    margin-bottom: 2.5rem;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    font-size: 1rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 2px solid var(--color-purpura-oscuro);
+    background-color: var(--color-azul-negro);
+    color: var(--color-texto-principal);
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-lila-claro);
+    box-shadow: 0 0 10px rgba(198, 130, 217, 0.5);
+    outline: none;
+}
+.hidden {
+    opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;
+}
+.contact-split-form .cta-button {
+    width: 100%;
+}
+.other-contact-methods {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--color-texto-secundario);
+}
+.other-contact-methods a {
+    color: var(--color-lila-claro);
+    font-weight: 600;
+    text-decoration: none;
+}
+.other-contact-methods a:hover {
+    text-decoration: underline;
+}
+.thank-you-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* =================================
    Footer Profesional
@@ -474,8 +558,11 @@ body {
     .hero-slogan { font-size: 3rem; }
     .hero-headline { font-size: 1.8rem; }
     .services-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    .offer-container-full, .contact-layout { flex-direction: column; text-align: center; }
+    .offer-container-full { flex-direction: column; text-align: center; }
     .tab-link { padding: 1rem; font-size: 1rem; }
+    .contact-split-container { grid-template-columns: 1fr; margin-top: 0; }
+    .contact-split-visual { min-height: 300px; order: 1; }
+    .contact-split-form { order: 2; }
 }
 
 /* --- Mobile (hasta 768px) --- */
@@ -517,76 +604,5 @@ body {
     .tab-link { flex-basis: 48%; text-align: center; padding: 0.8rem 1rem; }
     .footer-grid { text-align: center; }
     .footer-column h4::after { left: 50%; transform: translateX(-50%); }
-    .contact-layout { grid-template-columns: 1fr; }
-}
-
-/* =================================
-   Estilos para Formulario de Contacto Avanzado
-   ================================= */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--color-texto-secundario);
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    font-size: 1rem;
-    border: 2px solid var(--color-purpura-oscuro);
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--color-lila-claro);
-    box-shadow: 0 0 10px rgba(198, 130, 217, 0.5);
-}
-
-/* Campo Honeypot para Netlify */
-.hidden {
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0;
-    width: 0;
-    z-index: -1;
-}
-
-/* Estilos para la sección "Qué pasa después" */
-.contact-steps {
-    list-style: none;
-    padding-left: 0;
-}
-.contact-steps li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-.contact-steps li span {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    margin-right: 1rem;
-    background-color: var(--color-violeta-intenso);
-    color: #fff;
-    font-weight: 700;
-    border-radius: 50%;
-}
-
-/* Estilos para la página de agradecimiento */
-.thank-you-section {
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .contact-split-form .page-title { font-size: 2.2rem; }
 }
