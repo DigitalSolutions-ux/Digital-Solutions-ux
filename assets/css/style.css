@@ -519,3 +519,74 @@ body {
     .footer-column h4::after { left: 50%; transform: translateX(-50%); }
     .contact-layout { grid-template-columns: 1fr; }
 }
+
+/* =================================
+   Estilos para Formulario de Contacto Avanzado
+   ================================= */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    font-size: 1rem;
+    border: 2px solid var(--color-purpura-oscuro);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-lila-claro);
+    box-shadow: 0 0 10px rgba(198, 130, 217, 0.5);
+}
+
+/* Campo Honeypot para Netlify */
+.hidden {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+}
+
+/* Estilos para la sección "Qué pasa después" */
+.contact-steps {
+    list-style: none;
+    padding-left: 0;
+}
+.contact-steps li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.contact-steps li span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 1rem;
+    background-color: var(--color-violeta-intenso);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 50%;
+}
+
+/* Estilos para la página de agradecimiento */
+.thank-you-section {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
