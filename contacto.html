@@ -12,17 +12,13 @@
     <link rel="manifest" href="assets/favicons/site.webmanifest">
     <meta name="msapplication-TileColor" content="#5503a6">
     <meta name="theme-color" content="#0A0140">
-
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/chatbot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="preloader">
-        <div class="spinner"></div>
-    </div>
-
+    <div id="preloader"><div class="spinner"></div></div>
     <header class="main-header">
         <nav class="main-nav container">
             <a href="index.html" class="nav-logo">Digital Solutions</a>
@@ -42,36 +38,68 @@
         <section id="contact" class="contact-section page-section">
             <div class="container">
                 <h1 class="page-title fade-in">Hablemos de tu Proyecto</h1>
-                <p class="page-subtitle fade-in">Elige la opción que prefieras. Estamos listos para escucharte.</p>
+                <p class="page-subtitle fade-in">Completa el formulario y nuestro equipo se pondrá en contacto contigo a la brevedad.</p>
                 
                 <div class="contact-layout fade-in">
                     <div class="contact-form-wrapper">
-                        <h3><i class="fab fa-whatsapp"></i> Envíanos un Mensaje Directo</h3>
-                        <p>Es la forma más rápida. Completa el formulario y te redirigiremos a WhatsApp.</p>
-                        <form id="whatsapp-form" class="contact-form">
-                            <input id="wa-name" type="text" name="name" placeholder="Tu Nombre" required>
-                            <input id="wa-email" type="email" name="email" placeholder="Tu Correo (para seguimiento)" required>
-                            <textarea id="wa-message" name="message" placeholder="Cuéntanos un poco sobre tu proyecto..." rows="5" required></textarea>
-                            <button type="submit" class="cta-button">Enviar a WhatsApp</button>
+                        <h3>Escríbenos directamente</h3>
+                        
+                        <form name="contacto" method="POST" action="/gracias.html" data-netlify="true" netlify-honeypot="bot-field">
+                            
+                            <input type="hidden" name="form-name" value="contacto">
+                            <p class="hidden">
+                                <label>No llenar este campo si eres humano: <input name="bot-field"></label>
+                            </p>
+
+                            <div class="form-group">
+                                <label for="name">Nombre completo</label>
+                                <input id="name" type="text" name="name" placeholder="Tu Nombre Completo" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Correo electrónico</label>
+                                <input id="email" type="email" name="email" placeholder="tu@correo.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Teléfono / WhatsApp (Opcional)</label>
+                                <input id="phone" type="tel" name="phone" placeholder="Tu número de teléfono">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service">¿En qué servicio estás interesado?</label>
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected>Selecciona un servicio...</option>
+                                    <option value="Sitio Web">Sitio Web</option>
+                                    <option value="Tarjeta Digital">Tarjeta de Presentación Digital</option>
+                                    <option value="Soporte Shopify">Soporte Shopify</option>
+                                    <option value="Automatizacion">Automatización con ManyChat</option>
+                                    <option value="Otro">Otro (describir abajo)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Cuéntanos sobre tu proyecto</label>
+                                <textarea id="message" name="message" placeholder="Describe aquí tu idea o necesidad..." rows="5" required></textarea>
+                            </div>
+
+                            <button type="submit" class="cta-button">Enviar Mensaje</button>
                         </form>
                     </div>
 
                     <div class="contact-info-wrapper">
-                        
                         <div class="contact-card">
-                            <h3><i class="fas fa-calendar-alt"></i> Agenda una Videollamada</h3>
-                            <p>¿Prefieres hablarlo? Elige un horario disponible en nuestro calendario y tengamos una reunión de 15 minutos sin costo.</p>
-                            <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="cta-button-outline">Ver Disponibilidad</a>
-                        </div>
-
-                        <div class="contact-card">
-                            <h3>Otras Formas de Contacto</h3>
-                            <p><strong><i class="fas fa-envelope"></i> Email:</strong> <a href="mailto:digitalsolutions1232@gmail.com">digitalsolutions1232@gmail.com</a></p>
-                            <p><strong><i class="fas fa-clock"></i> Horario de Atención:</strong> Lunes a Viernes, 5:00 AM - 12:00 AM</p>
+                            <h3><i class="fas fa-info-circle"></i> ¿Qué pasa después?</h3>
+                            <ul class="contact-steps">
+                                <li><span>1</span> Recibimos tu mensaje al instante.</li>
+                                <li><span>2</span> Te respondemos en menos de 24 horas hábiles.</li>
+                                <li><span>3</span> Agendamos una breve llamada si es necesario para entender tu proyecto a fondo.</li>
+                                <li><span>4</span> Recibes una propuesta clara y sin compromiso.</li>
+                            </ul>
                         </div>
                         
                         <div class="contact-card testimonial-card">
-                            <p>"El impacto fue inmediato. La nueva landing page duplicó nuestras consultas en el primer mes. Un trabajo impecable y profesional."</p>
+                            <p>"El impacto fue inmediato. La nueva landing page duplicó nuestras consultas. Un trabajo impecable y profesional."</p>
                             <span class="testimonial-author">- Cliente Satisfecho</span>
                         </div>
                     </div>
@@ -81,43 +109,8 @@
     </main>
 
     <div id="chatbot-container"></div>
-
     <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-column">
-                <h3 class="footer-logo">Digital Solutions</h3>
-                <p>El socio tecnológico que impulsa el crecimiento de las PYMES en México.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Navegación</h4>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="servicios.html">Servicios</a></li>
-                    <li><a href="portafolio.html">Portafolio</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Contacto</h4>
-                <ul>
-                    <li><i class="fas fa-envelope"></i> <a href="mailto:digitalsolutions1232@gmail.com">digitalsolutions1232@gmail.com</a></li>
-                    <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/528147931498">+52 81 4793 1498</a></li>
-                    <li><i class="fas fa-map-marker-alt"></i> Tamaulipas, México</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Síguenos</h4>
-                <div class="social-icons">
-                    <a href="https://www.tiktok.com/@digitalsolutions__?_t=ZS-8xa2dCJZ3qL&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.instagram.com/digitalsolutions_tam?igsh=bjR1c2N4dmdldnpo" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/share/19HBvUXo71/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Digital Solutions. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+        </footer>
     
     <script src="assets/js/main.js"></script>
     <script src="assets/js/chatbot.js"></script>
